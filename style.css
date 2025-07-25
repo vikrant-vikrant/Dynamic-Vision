@@ -1,0 +1,189 @@
+@font-face {
+  font-family: vision;
+  src: url(Timeburner-xJB8.ttf);
+}
+@font-face {
+  font-family: font;
+  src: url(MethanerseFreeTrial-0WpE4.otf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #f3efea;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+.main {
+  position: relative;
+}
+.page1 {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f3efea;
+  position: relative;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 13vh;
+  background-color: #f3efea;
+  border-bottom: 0.5px solid black;
+  position: relative;
+  padding: 0 3vw;
+  font-family: sans-serif;
+}
+
+nav p {
+  height: 12vh;
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 1.5vw;
+  display: flex;
+  align-items: center;
+  color: #31312f;
+  cursor: pointer;
+}
+nav i {
+  font-size: 3vw;
+  margin-right: 0.5vw;
+}
+nav span {
+  font-family: font;
+  margin-left: 0.5vw;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+nav .info {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+.info h4 {
+  padding: 1vw 2vw;
+  border: 1px solid #31312f;
+  border-radius: 50px;
+  font-weight: 400;
+  position: relative;
+  transition: all ease 0.3s;
+  overflow: hidden;
+  cursor: pointer;
+}
+.info h4 a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #31312f;
+  z-index: 9;
+  position: relative;
+}
+nav .info h4::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #31312f;
+  left: 0;
+  bottom: -100%;
+  border-radius: 50px;
+  transition: all ease 0.4s;
+}
+nav h4:hover::before {
+  bottom: 0;
+  border-radius: 0;
+}
+.info h4:hover a {
+  color: #f3efea;
+}
+.hero {
+  display: flex;
+  height: calc(100vh - 13vh);
+}
+.left {
+  width: 60%;
+  padding: 10vh 3vw;
+  color: #31312f;
+  z-index: 10;
+}
+.left-text h1 {
+  position: relative;
+}
+.left-text {
+  font-size: 2.5vw;
+}
+.left-text h1 span::after {
+  content: "";
+  position: absolute;
+  right: 16vw;
+  border-radius: 50%;
+  rotate: -8deg;
+  z-index: -1;
+  border: 5px solid #eba139;
+  height: 10vh;
+  width: 18vw;
+  bottom: 0;
+}
+.left-text p {
+  font-size: 1.5vw;
+  margin-top: 3vh;
+  font-family: sans-serif;
+}
+.learn-more {
+  padding: 1vw 2vw;
+  font-size: 1.5vw;
+  border-radius: 50px;
+  border: none;
+  color: #f3efea;
+  background-color: #31312f;
+  margin-top: 5vh;
+  cursor: pointer;
+}
+.fetures {
+  /* background-color: grey; */
+  margin-top: 4vh;
+  /* width: 15vw; */
+  display: inline-block;
+  font-family: sans-serif;
+}
+.fetures h3 {
+  border: 1px solid #31312f;
+  border-radius: 20px;
+  padding: 1vh 1vh;
+  font-size: 1vw;
+  margin-top: 2.5vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: normal;
+}
+.fetures h3 i {
+  font-size: 1.5vw;
+  color: #497792;
+  margin-right: 5px;
+}
+.deep {
+  width: 14vw;
+}
+.line {
+  display: flex;
+}
+.line :nth-child(2) {
+  margin-left: 2vh;
+}
+.right {
+  background-image: url(man-readingself.png);
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  height: 88vh;
+  width: 47vw;
+  right: 2vw;
+  top: 10vh;
+}
