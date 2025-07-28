@@ -253,18 +253,32 @@ nav h4:hover::before {
   margin-bottom: 10vh;
   color: #31312f;
 }
-
+.special div {
+  position: relative;
+  cursor: pointer;
+}
+.special div img:hover {
+  transition: all 0.3s;
+  box-shadow: 0px 0px 30px #31312f8f;
+  transform: scale(1.02);
+}
 .special div img {
   height: 90%;
   border-radius: 30px;
-  cursor: pointer;
 }
 .special div h2 {
   font-size: 2vw;
-  margin: 1.5vw 0;
+  margin: 1vw 0;
 }
 .special div p {
   font-size: 1.5vw;
+}
+.special div i {
+  position: absolute;
+  right: 1vw;
+  bottom: 7vh;
+  font-size: 3vw;
+  color: #31312f;
 }
 .page3 {
   width: calc(100% - 8vw);
@@ -273,7 +287,7 @@ nav h4:hover::before {
 }
 .lines {
   display: flex;
-  padding-top: 10vh;
+  padding-top: 8vh;
   color: #31312f;
   justify-content: space-between;
   align-items: center;
