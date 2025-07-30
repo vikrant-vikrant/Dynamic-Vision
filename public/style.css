@@ -261,6 +261,7 @@ nav h4:hover::before {
   transition: all 0.3s;
   box-shadow: 0px 0px 30px #31312f8f;
   transform: scale(1.02);
+  rotate: -5deg;
 }
 .special div img {
   height: 90%;
@@ -411,9 +412,10 @@ nav h4:hover::before {
 .art-crafts div h2 {
   position: absolute;
   bottom: 5vh;
-  left: 2vw;
+  left: 5%;
   color: #31312f;
   backdrop-filter: blur(2px);
   padding: 3vh 2vw;
   font-size: 2.5vw;
+  width: 90%;
 }
