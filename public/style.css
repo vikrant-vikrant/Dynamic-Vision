@@ -352,3 +352,29 @@ nav h4:hover::before {
   cursor: pointer;
   font-size: 1.2vw;
 }
+/* -----BLOG SECTION----- */
+.blog-right-img {
+  background-image: url(flat-creativity-concept-illustration.png);
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  height: 85vh;
+  width: 45vw;
+  right: 2vw;
+  top: 15vh;
+}
+.left-text .explore {
+  margin: 3vh 0;
+}
+.hero-left-text h1 span::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  rotate: -8deg;
+  z-index: -1;
+  border: 6px solid #eba139;
+  height: 10vh;
+  width: 15vw;
+  right: 19vw;
+  bottom: 0;
+}

@@ -16,6 +16,9 @@ app.get("/", (req, res) => {
 app.get("/home", (req, res) => {
   res.render("listings/index.ejs");
 });
+app.get("/blog", (req, res) => {
+  res.render("listings/blog.ejs");
+});
 
 app.listen(8000, () => {
   console.log(`App is listing to port : 8000`);
