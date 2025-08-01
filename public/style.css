@@ -17,6 +17,7 @@ body {
 }
 html,
 body {
+  scroll-behavior: smooth;
   height: 100%;
   width: 100%;
 }
@@ -49,8 +50,11 @@ nav p {
   font-size: 1.5vw;
   display: flex;
   align-items: center;
-  color: #31312f;
   cursor: pointer;
+}
+nav p a {
+  color: #31312f;
+  text-decoration: none;
 }
 nav i {
   font-size: 3vw;
@@ -250,12 +254,15 @@ nav h4:hover::before {
   height: 50vh;
   justify-content: space-around;
   text-align: center;
-  color: #31312f;
   margin: 10vh 0;
 }
 .special div {
   position: relative;
   cursor: pointer;
+}
+.special div a {
+  color: #31312f;
+  text-decoration: none;
 }
 .special div img:hover {
   transition: all 0.3s;
