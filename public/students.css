@@ -1,0 +1,33 @@
+.students {
+  /* min-height: 100vh; */
+  width: calc(100% - 6vw);
+  margin: 4vh 3vw;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 10px; */
+  display: flex;
+  flex-wrap: wrap;
+  font-family: sans-serif;
+}
+.list {
+  background-color: grey;
+  /* height: 145px; */
+  /* width: 15vw; */
+  margin: 1vw;
+  padding: 1vw;
+  border-radius: 10px;
+  display: flex;
+}
+.list img {
+  height: 5vw;
+  width: 5vw;
+  border-radius: 10px;
+}
+.list .details{
+  margin-left: 1vw;
+}
+.list .details h2{
+  font-size: 2vw;
+  text-transform: capitalize;
+}
