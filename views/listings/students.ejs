@@ -5,8 +5,18 @@
   <div class="main">
     <div class="page1">
       <%- include('../includes/navbar')%>
-      <div class="students"></div>
+      <div class="students">
+        <%for(let info of data){%>
+        <div class="list">
+          <img src="https://ui-avatars.com/api/?name=<%= info.name %>" alt="" />
+          <div class="details">
+            <h2><%= info.name %></h2>
+            <p>CLASS : <%= info.class %></p>
+            <p>STATUS : <%= info.status %></p>
+          </div>
+        </div>
+        <%}%>
+      </div>
     </div>
   </div>
-  <script type="module" src="./js/showStudents.js"></script>
 </body>

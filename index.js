@@ -10,20 +10,20 @@ app.set("view engine", "ejs");
 const ejsMate = require("ejs-mate");
 app.engine("ejs", ejsMate);
 
-// const Student = require("./models/students.js");
+const StudentSchema = require("./models/students.js");
 // const { render } = require("ejs");
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/DynamicVision";
-// main()
-//   .then(() => {
-//     console.log("Connected to DB");
-//   })
-//   .catch((err) => {
-//     console.log("DB Connection Error:", err);
-//   });
-// async function main() {
-//   await mongoose.connect(MONGO_URL);
-// }
+const MONGO_URL = "mongodb://127.0.0.1:27017/DynamicVision";
+main()
+  .then(() => {
+    console.log("Connected to DB");
+  })
+  .catch((err) => {
+    console.log("DB Connection Error:", err);
+  });
+async function main() {
+  await mongoose.connect(MONGO_URL);
+}
 
 app.get("/", (req, res) => {
   res.send("Hello World");
@@ -35,14 +35,32 @@ app.get("/home", (req, res) => {
 app.get("/blog", (req, res) => {
   res.render("listings/blog.ejs");
 });
-app.get("/students", (req, res) => {
-  res.render("listings/students.ejs");
+app.get("/students", async (req, res) => {
+  let data = await StudentSchema.find();
+  res.render("listings/students.ejs", { data });
 });
-// app.post("/student", async (req, res) => {
-//   const { name, grade, parent } = req.body;
-//   await Student.create(name, grade, parent);
-//   res.render("added", { name });
-// });
+app.get("/newStudent", (req, res) => {
+  res.render("listings/newStudent.ejs");
+});
+
+app.post("/newStudent", async (req, res) => {
+  let { name, grade, status } = req.body;
+  let newChat = new StudentSchema({
+    name: name,
+    grade: grade,
+    status: status,
+  });
+  newChat
+    .save()
+    .then((res) => {
+      console.log("Add new Student");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  res.redirect("listings/newStudent.ejs");
+});
 
 app.listen(8000, () => {
   console.log(`App is listing to port : 8000`);
