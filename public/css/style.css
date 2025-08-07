@@ -1,10 +1,10 @@
-@font-face {
+/* @font-face {
   font-family: vision;
   src: url(Timeburner-xJB8.ttf);
-}
+} */
 @font-face {
   font-family: font;
-  src: url(MethanerseFreeTrial-0WpE4.otf);
+  src: url(../MethanerseFreeTrial-0WpE4.otf);
 }
 
 * {
@@ -182,7 +182,7 @@ nav h4:hover::before {
   margin-left: 2vh;
 }
 .right {
-  background-image: url(man-readingself.png);
+  background-image: url(../man-readingself.png);
   background-position: center;
   background-size: cover;
   position: absolute;
@@ -364,7 +364,7 @@ nav h4:hover::before {
 }
 /* -----BLOG SECTION----- */
 .blog-right-img {
-  background-image: url(flat-creativity-concept-illustration.png);
+  background-image: url(../img/flat-creativity-concept-illustration.png);
   background-position: center;
   background-size: cover;
   position: absolute;
