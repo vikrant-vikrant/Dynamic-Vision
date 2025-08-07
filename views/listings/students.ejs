@@ -5,14 +5,18 @@
   <div class="main">
     <div class="page1">
       <%- include('../includes/navbar')%>
+      <a href="/newStudent">Add new Student</a>
       <div class="students">
-        <%for(let info of data){%>
+        <%for(let student of studentsData){%>
         <div class="list">
-          <img src="https://ui-avatars.com/api/?name=<%= info.name %>" alt="" />
+          <img
+            src="https://ui-avatars.com/api/?name=<%= student.name %>"
+            alt=""
+          />
           <div class="details">
-            <h2><%= info.name %></h2>
-            <p>CLASS : <%= info.class %></p>
-            <p>STATUS : <%= info.status %></p>
+            <h2><%= student.name %></h2>
+            <p>CLASS : <%= student.class %></p>
+            <p>STATUS : <%= student.status %></p>
           </div>
         </div>
         <%}%>

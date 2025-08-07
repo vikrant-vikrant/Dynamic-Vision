@@ -6,13 +6,13 @@
     <div class="page1">
       <%- include('../includes/navbar')%>
       <h1>Add new Student</h1>
-      <form action="/newStudent/" method="post">
+      <form action="/newStudent" method="post">
         <label for="name">name</label>
-        <input type="text" id="name" /><br />
+        <input type="text" id="name" name="name"/><br />
         <label for="grade">grade</label>
-        <input type="text" id="grade" /><br />
+        <input type="text" id="grade" name="grade"/><br />
         <label for="status">status</label>
-        <input type="text" id="status" /><br />
+        <input type="text" id="status" name="status"/><br />
         <button>Add Student</button>
       </form>
     </div>
