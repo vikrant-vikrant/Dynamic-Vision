@@ -1,0 +1,22 @@
+<% layout('layouts/boilerPlate') -%>
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/students.css" />
+<body>
+  <div class="main">
+    <div class="page1">
+      <%- include('../includes/navbar')%>
+      <a href="/students">← Back to students</a>
+      <!-- <div class="list"> -->
+        <div class="details">
+          <h1><%= student.name %></h1>
+          <img
+            src="https://ui-avatars.com/api/?name=<%= student.name %>"
+            alt=""
+          />
+          <p><strong>Grade:</strong> <%= student.grade %></p>
+          <p><strong>Status:</strong> <%= student.status %></p>
+        </div>
+      <!-- </div> -->
+    </div>
+  </div>
+</body>

@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const studentSchema = new mongoose.Schema({
-  name: String,
-  class: String,
-  status: String,
+  name: { type: String, require: true },
+  grade: { type: String, require: true },
+  status: { type: String, default: "Active" },
 });
 
 module.exports = mongoose.model("DynamicStudents", studentSchema);

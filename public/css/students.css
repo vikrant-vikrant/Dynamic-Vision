@@ -6,6 +6,10 @@
   flex-wrap: wrap;
   font-family: sans-serif;
 }
+.students a{
+  text-decoration: none;
+  color: black;
+}
 .list {
   width: 20vw;
   height: 15vh;

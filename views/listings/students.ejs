@@ -7,18 +7,20 @@
       <%- include('../includes/navbar')%>
       <a href="/newStudent">Add new Student</a>
       <div class="students">
-        <%for(let student of studentsData){%>
-        <div class="list">
-          <img
-            src="https://ui-avatars.com/api/?name=<%= student.name %>"
-            alt=""
-          />
-          <div class="details">
-            <h2><%= student.name %></h2>
-            <p>CLASS : <%= student.class %></p>
-            <p>STATUS : <%= student.status %></p>
+        <%for(let students of studentsData){%>
+        <a href="/students/<%=students._id%>">
+          <div class="list">
+            <img
+              src="https://ui-avatars.com/api/?name=<%= students.name %>"
+              alt=""
+            />
+            <div class="details">
+              <h2><%= students.name %></h2>
+              <p>GRADE : <%= students.grade %></p>
+              <p>STATUS : <%= students.status %></p>
+            </div>
           </div>
-        </div>
+        </a>
         <%}%>
       </div>
     </div>

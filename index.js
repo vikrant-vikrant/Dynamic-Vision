@@ -10,7 +10,6 @@ app.set("view engine", "ejs");
 const ejsMate = require("ejs-mate");
 app.engine("ejs", ejsMate);
 
-const StudentSchema = require("./models/students.js");
 app.use(express.urlencoded({ extended: true }));
 const MONGO_URL = "mongodb://127.0.0.1:27017/DynamicVision";
 main()
@@ -34,26 +33,24 @@ app.get("/home", (req, res) => {
 app.get("/blog", (req, res) => {
   res.render("listings/blog.ejs");
 });
-// -----STUDENTS SECITON
-app.get("/students", async (req, res) => {
-  let studentsData = await StudentSchema.find();
-  res.render("listings/students.ejs", { studentsData });
-});
-app.get("/newStudent", (req, res) => {
-  res.render("listings/newStudent.ejs");
-});
-app.post("/newStudent", async (req, res) => {
-  const { name, grade, status } = req.body;
-  const newStudent = new StudentSchema({ name, grade, status });
-  try {
-    await newStudent.save();
-    console.log("Student saved");
-    res.redirect("/students");
-  } catch (err) {
-    console.error("Error saving student:", err);
-    res.status(500).send("Something went wrong");
-  }
-});
+const studentsRoutes = require("./routes/students");
+app.use("/students", studentsRoutes);
+
+// app.get("/newStudent", (req, res) => {
+//   res.render("listings/newStudent.ejs");
+// });
+// app.post("/newStudent", async (req, res) => {
+//   const { name, grade, status } = req.body;
+//   const newStudent = new StudentSchema({ name, grade, status });
+//   try {
+//     await newStudent.save();
+//     console.log("Student saved");
+//     res.redirect("/students");
+//   } catch (err) {
+//     console.error("Error saving student:", err);
+//     res.status(500).send("Something went wrong");
+//   }
+// });
 
 app.listen(8000, () => {
   console.log(`App is listing to port : 8000`);
