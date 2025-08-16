@@ -24,31 +24,19 @@ router.get("/:id", async (req, res, next) => {
       return res.redirect("/students");
     }
     const student = await Student.findById(id);
+    const formattedDate = student.joiningDate.toLocaleDateString("en-GB", {
+      weekday: "short", // Fri
+      day: "2-digit", // 15
+      month: "short", // Aug
+      year: "numeric", // 2025
+    });
     if (!student) {
       req.flash("error", "Student not found");
       return res.redirect("/students");
     }
-    res.render("listings/show", { student }); // create this view
+    res.render("listings/show", { student,formattedDate }); // create this view
   } catch (err) {
     next(err);
-  }
-});
-
-//newStudent - to add new student
-router.get("/newStudent", (req, res) => {
-  res.render("listings/newStudent");
-});
-// to save data
-router.post("/newStudent", async (req, res) => {
-  const { name, grade, status } = req.body;
-  const newStudent = new StudentSchema({ name, grade, status });
-  try {
-    await newStudent.save();
-    console.log("Student saved");
-    res.redirect("/students");
-  } catch (err) {
-    console.error("Error saving student:", err);
-    res.status(500).send("Something went wrong");
   }
 });
 

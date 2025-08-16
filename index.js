@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const path = require("path");
+const StudentSchema = require("./models/students.js");
 
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -36,21 +37,41 @@ app.get("/blog", (req, res) => {
 const studentsRoutes = require("./routes/students");
 app.use("/students", studentsRoutes);
 
-// app.get("/newStudent", (req, res) => {
-//   res.render("listings/newStudent.ejs");
-// });
-// app.post("/newStudent", async (req, res) => {
-//   const { name, grade, status } = req.body;
-//   const newStudent = new StudentSchema({ name, grade, status });
-//   try {
-//     await newStudent.save();
-//     console.log("Student saved");
-//     res.redirect("/students");
-//   } catch (err) {
-//     console.error("Error saving student:", err);
-//     res.status(500).send("Something went wrong");
-//   }
-// });
+app.get("/newStudent", (req, res) => {
+  res.render("listings/newStudent.ejs");
+});
+app.post("/newStudent", async (req, res) => {
+  const {
+    name,
+    grade,
+    status,
+    parent,
+    contact,
+    phone,
+    note,
+    joiningDate,
+    fees,
+  } = req.body;
+  const newStudent = new StudentSchema({
+    name,
+    grade,
+    status,
+    parent,
+    contact,
+    phone,
+    note,
+    joiningDate,
+    fees,
+  });
+  try {
+    await newStudent.save();
+    console.log("Student saved");
+    res.redirect("/students");
+  } catch (err) {
+    console.error("Error saving student:", err);
+    res.status(500).send("Something went wrong");
+  }
+});
 
 app.listen(8000, () => {
   console.log(`App is listing to port : 8000`);

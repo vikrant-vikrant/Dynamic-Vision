@@ -7,15 +7,24 @@
       <%- include('../includes/navbar')%>
       <a href="/students">← Back to students</a>
       <!-- <div class="list"> -->
-        <div class="details">
+      <div class="student-info">
+        <img
+          src="https://ui-avatars.com/api/?name=<%= student.name %>"
+          alt=""
+        />
+        <div class="img-name">
           <h1><%= student.name %></h1>
-          <img
-            src="https://ui-avatars.com/api/?name=<%= student.name %>"
-            alt=""
-          />
+          <br />
           <p><strong>Grade:</strong> <%= student.grade %></p>
           <p><strong>Status:</strong> <%= student.status %></p>
+          <p><strong>Parent:</strong> <%= student.parent %></p>
+          <p><strong>Contact:</strong> <%= student.contact %></p>
+          <p><strong>Phone:</strong> <%= student.phone %></p>
+          <p><strong>Note:</strong> <%= student.note %></p>
+          <p><strong>JoiningDate:</strong> <%= formattedDate %></p>
+          <p><strong>Fees:</strong> <%= student.fees %></p>
         </div>
+      </div>
       <!-- </div> -->
     </div>
   </div>
