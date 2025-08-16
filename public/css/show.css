@@ -1,0 +1,35 @@
+* {
+  font-family: sans-serif;
+}
+.student-info {
+  background-color: grey;
+  /* border: 2px solid black; */
+  width: 40%;
+  margin: 4vh 3vw;
+  padding: 1vw;
+  border-radius: 10px;
+  font-size: 1.4rem;
+}
+.student-info .img-name {
+  display: flex;
+  align-items: center;
+}
+.student-info .img-name h1 {
+  margin-left: 1rem;
+  font-size: clamp(12px, 3vw, 50px);
+  text-transform: capitalize;
+}
+.student-info img {
+  border-radius: 10px;
+}
+.parent,
+.status {
+  text-transform: capitalize;
+}
+.edit-info {
+  margin: 0 3vw;
+  padding: 1vw;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}

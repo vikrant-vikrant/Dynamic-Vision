@@ -1,6 +1,6 @@
 <% layout('layouts/boilerPlate') -%>
 <link rel="stylesheet" href="/css/style.css" />
-<link rel="stylesheet" href="/css/students.css" />
+<link rel="stylesheet" href="/css/show.css" />
 <body>
   <div class="main">
     <div class="page1">
@@ -8,23 +8,28 @@
       <a href="/students">← Back to students</a>
       <!-- <div class="list"> -->
       <div class="student-info">
-        <img
-          src="https://ui-avatars.com/api/?name=<%= student.name %>"
-          alt=""
-        />
         <div class="img-name">
+          <img
+            src="https://ui-avatars.com/api/?name=<%= student.name %>&bold=true"
+            alt=""
+          />
           <h1><%= student.name %></h1>
-          <br />
-          <p><strong>Grade:</strong> <%= student.grade %></p>
-          <p><strong>Status:</strong> <%= student.status %></p>
-          <p><strong>Parent:</strong> <%= student.parent %></p>
-          <p><strong>Contact:</strong> <%= student.contact %></p>
-          <p><strong>Phone:</strong> <%= student.phone %></p>
-          <p><strong>Note:</strong> <%= student.note %></p>
-          <p><strong>JoiningDate:</strong> <%= formattedDate %></p>
-          <p><strong>Fees:</strong> <%= student.fees %></p>
         </div>
+        <br />
+        <p><strong>Grade:</strong> <%= student.grade %></p>
+        <p class="status"><strong>Status:</strong> <%= student.status %></p>
+        <p class="parent"><strong>Parent:</strong> <%= student.parent %></p>
+        <p><strong>Contact:</strong> <%= student.contact %></p>
+        <p><strong>Phone:</strong> <%= student.phone %></p>
+        <p><strong>Note:</strong> <%= student.note %></p>
+        <p><strong>Joining Date:</strong> <%= formattedDate %></p>
+        <p><strong>Fees:</strong> <%= student.fees %></p>
       </div>
+      <a href="#">
+        <button class="edit-info">
+          Edit Information <i class="fa-regular fa-pen-to-square"></i>
+        </button>
+      </a>
       <!-- </div> -->
     </div>
   </div>
