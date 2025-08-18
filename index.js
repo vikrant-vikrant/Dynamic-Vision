@@ -1,8 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+const router = express.Router();
 const path = require("path");
 const StudentSchema = require("./models/students.js");
+const Student = require("./models/students");
+const mehtodOverride = require("method-override");
+app.use(mehtodOverride("_method"));
 
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -34,12 +38,113 @@ app.get("/home", (req, res) => {
 app.get("/blog", (req, res) => {
   res.render("listings/blog.ejs");
 });
-const studentsRoutes = require("./routes/students");
-app.use("/students", studentsRoutes);
+// const studentsRoutes = require("./routes/students");
+// app.use("/students", studentsRoutes);
 
+// students - list all students
+app.get("/students", async (req, res, next) => {
+  try {
+    const students = await Student.find({});
+    res.render("listings/students", { studentsData: students }); // matches your EJS var
+  } catch (err) {
+    next(err);
+  }
+});
+
+// show - show one student
+app.get("/student/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    // validate id
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      req.flash("error", "Invalid student id");
+      return res.redirect("/students");
+    }
+    const student = await Student.findById(id);
+    const formattedDate = student.joiningDate.toLocaleDateString("en-GB", {
+      weekday: "short", // Fri
+      day: "2-digit", // 15
+      month: "short", // Aug
+      year: "numeric", // 2025
+    });
+    if (!student) {
+      req.flash("error", "Student not found");
+      return res.redirect("/students");
+    }
+    res.render("listings/show", { student, formattedDate }); // create this view
+  } catch (err) {
+    next(err);
+  }
+});
+//edit route
+app.get("/student/:id/edit", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    // validate id
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      req.flash("error", "Invalid student id");
+      return res.redirect("/students");
+    }
+    const student = await Student.findById(id);
+    if (!student) {
+      req.flash("error", "Student not found");
+      return res.redirect("/students");
+    }
+    res.render("listings/edit", { student }); // create this view
+  } catch (err) {
+    next(err);
+  }
+});
+// app.get("/student/:id/edit", async (req, res) => {
+//   const { id } = req.params;
+//   const student = await Student.findById(id);
+//   res.render("listings/edit",{student});
+// });
+//edit route
+app.put("/student/:id/edit", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const {
+      name,
+      grade,
+      status,
+      parent,
+      contact,
+      phone,
+      note,
+      joiningDate,
+      fees,
+    } = req.body;
+    // const student = await Student.findById(id);
+    let updatedStudent = await Student.findByIdAndUpdate(id, {
+      name: name,
+      grade: grade,
+      status: status,
+      parent: parent,
+      contact: contact,
+      phone: phone,
+      note: note,
+      joiningDate: joiningDate,
+      fees: fees,
+    });
+    console.log(updatedStudent);
+    const student = await Student.findById(id);
+    const formattedDate = student.joiningDate.toLocaleDateString("en-GB", {
+      weekday: "short", // Fri
+      day: "2-digit", // 15
+      month: "short", // Aug
+      year: "numeric", // 2025
+    });
+    res.render("listings/show", { student, formattedDate });
+  } catch (err) {
+    next(err);
+  }
+});
+//to add newStudent
 app.get("/newStudent", (req, res) => {
   res.render("listings/newStudent.ejs");
 });
+//to push newStudent data
 app.post("/newStudent", async (req, res) => {
   const {
     name,

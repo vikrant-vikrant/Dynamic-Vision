@@ -25,7 +25,7 @@
         <p><strong>Joining Date:</strong> <%= formattedDate %></p>
         <p><strong>Fees:</strong> <%= student.fees %></p>
       </div>
-      <a href="#">
+      <a href="/student/<%= student.id%>/edit">
         <button class="edit-info">
           Edit Information <i class="fa-regular fa-pen-to-square"></i>
         </button>
