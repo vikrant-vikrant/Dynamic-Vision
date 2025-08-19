@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const router = express.Router();
+// const router = express.Router();
 const path = require("path");
 const StudentSchema = require("./models/students.js");
 const Student = require("./models/students");
@@ -28,19 +28,12 @@ async function main() {
   await mongoose.connect(MONGO_URL);
 }
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
 app.get("/home", (req, res) => {
   res.render("listings/index.ejs");
 });
 app.get("/blog", (req, res) => {
   res.render("listings/blog.ejs");
 });
-// const studentsRoutes = require("./routes/students");
-// app.use("/students", studentsRoutes);
-
 // students - list all students
 app.get("/students", async (req, res, next) => {
   try {
@@ -90,16 +83,16 @@ app.get("/student/:id/edit", async (req, res, next) => {
       req.flash("error", "Student not found");
       return res.redirect("/students");
     }
-    res.render("listings/edit", { student }); // create this view
+
+    // Convert to YYYY-MM-DD for input type="date"
+    const formattedDate = student.joiningDate
+      ? student.joiningDate.toISOString().split("T")[0]
+      : "";
+    res.render("listings/edit", { student, formattedDate }); // create this view
   } catch (err) {
     next(err);
   }
 });
-// app.get("/student/:id/edit", async (req, res) => {
-//   const { id } = req.params;
-//   const student = await Student.findById(id);
-//   res.render("listings/edit",{student});
-// });
 //edit route
 app.put("/student/:id/edit", async (req, res, next) => {
   try {
@@ -115,7 +108,6 @@ app.put("/student/:id/edit", async (req, res, next) => {
       joiningDate,
       fees,
     } = req.body;
-    // const student = await Student.findById(id);
     let updatedStudent = await Student.findByIdAndUpdate(id, {
       name: name,
       grade: grade,
