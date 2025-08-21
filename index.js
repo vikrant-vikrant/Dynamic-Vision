@@ -119,7 +119,6 @@ app.put("/student/:id/edit", async (req, res, next) => {
       joiningDate: joiningDate,
       fees: fees,
     });
-    console.log(updatedStudent);
     const student = await Student.findById(id);
     const formattedDate = student.joiningDate.toLocaleDateString("en-GB", {
       weekday: "short", // Fri
@@ -169,7 +168,15 @@ app.post("/newStudent", async (req, res) => {
     res.status(500).send("Something went wrong");
   }
 });
-
+//to remove a student
+app.delete("/student/:id", async (req, res) => {
+  let { id } = req.params;
+  let removeStudent = await Student.findByIdAndDelete(id);
+  if (!removeStudent) {
+    throw new ExpressError(404, "Student not found");
+  }
+  res.redirect("/students");
+});
 app.listen(8000, () => {
   console.log(`App is listing to port : 8000`);
 });
