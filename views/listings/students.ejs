@@ -5,9 +5,11 @@
   <div class="main">
     <div class="page1">
       <%- include('../includes/navbar')%>
-      <a href="/newStudent"
-        >Add new Student <i class="fa-solid fa-user-plus"></i
-      ></a>
+      <div class="new-student">
+        <a href="/newStudent" title="Add New Student">
+          <i class="fa-solid fa-user-plus"></i
+        ></a>
+      </div>
       <div class="students">
         <%for(let students of studentsData){%>
         <a href="/student/<%=students._id%>">
@@ -19,7 +21,6 @@
             <div class="details">
               <h2><%= students.name %></h2>
               <p>GRADE : <%= students.grade %></p>
-              <p>STATUS : <%= students.status %></p>
             </div>
           </div>
         </a>

@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   font-family: sans-serif;
 }
-.students a{
+.students a {
   text-decoration: none;
   color: black;
 }
@@ -31,4 +31,24 @@
   overflow: hidden;
   font-size: clamp(12px, 2vw, 24px);
   text-transform: capitalize;
+}
+.new-student {
+  background-color: grey;
+  height: 10vh;
+  width: 10vh;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 2vh;
+  position: absolute;
+  bottom: 5vh;
+  right: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 10px 50px 4px;
+}
+.new-student a {
+  text-decoration: none;
+  color: #31312f;
+  font-size: 2.5rem;
 }

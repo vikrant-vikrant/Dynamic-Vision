@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const studentSchema = new mongoose.Schema({
   name: { type: String, require: true },
   grade: { type: String, require: true },
-  status: { type: String, default: "Active" },
   parent: { type: String },
   contact: { type: Number },
   phone: { type: Number },

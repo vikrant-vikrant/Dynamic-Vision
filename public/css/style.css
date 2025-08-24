@@ -71,7 +71,7 @@ nav .info {
   align-items: center;
   gap: 1vw;
 }
-.info h4 {
+.info a {
   padding: 1vw 2vw;
   border: 1px solid #31312f;
   border-radius: 50px;
@@ -80,15 +80,16 @@ nav .info {
   transition: all ease 0.3s;
   overflow: hidden;
   cursor: pointer;
+  text-decoration: none;
 }
-.info h4 a {
+.info a h4 {
   font-size: 14px;
   text-decoration: none;
   color: #31312f;
   z-index: 9;
   position: relative;
 }
-nav .info h4::before {
+nav .info a::before {
   content: "";
   position: absolute;
   height: 100%;
@@ -99,11 +100,11 @@ nav .info h4::before {
   border-radius: 50px;
   transition: all ease 0.4s;
 }
-nav h4:hover::before {
+nav a:hover::before {
   bottom: 0;
   border-radius: 0;
 }
-.info h4:hover a {
+.info a:hover h4 {
   color: #f3efea;
 }
 .hero {
