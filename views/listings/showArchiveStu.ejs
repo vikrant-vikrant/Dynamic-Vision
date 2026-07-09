@@ -16,6 +16,7 @@
           <p><strong>Fees :</strong> <%= student.fees %></p>
           <p><strong>Due Fees :</strong> <%= student.dueFees %></p>
           <p><strong>Joining Date :</strong> <%= formattedDate %></p>
+          <p><strong>Archive on :</strong> <%= ArchiveDate %></p>
           <%if(student.parent){%>
             <p class="parent"><strong>Parent :</strong> <%= student.parent %></p>
           <%}%>
@@ -146,7 +147,7 @@
         <button class="edit-info"><i class="fa-regular fa-pen-to-square"></i>Add / Edit</button>
       </a>
        <form action="/students/<%= student._id %>/restore" method="POST">
-        <button class="edit-info">Restore</button>
+        <button class="edit-info">Unarchive</button>
       </form>
       <form action="/students/<%= student._id %>/delete?_method=delete" method="post">
         <button class="edit-info">
