@@ -309,7 +309,8 @@ module.exports.showArchiveStu = catchAsync(async (req, res, next) => {
   let student = await ArchivedStudent.findOne({ _id: id, owner: req.user._id });
   if (!student) throw new ExpressError(404, "Student not found");
   const formattedDate = formatDate(student.joiningDate);
-  res.render("listings/showArchiveStu", { student, formattedDate });
+  const ArchiveDate = formatDate(student.deactivatedAt);
+  res.render("listings/showArchiveStu", { student, formattedDate, ArchiveDate });
 });
 module.exports.addArchiveStuFee = catchAsync(async (req, res) => {
   let { id } = req.params;
