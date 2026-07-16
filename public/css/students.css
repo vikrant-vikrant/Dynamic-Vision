@@ -206,12 +206,6 @@ ul {
   display: flex;
   font-size: 1rem;
 }
-#student-count {
-  background-color: #a0d8ff;
-}
-#student-count {
-  background-color: #a0d8ff;
-}
 @media (max-width: 600px) {
   .main {
     width: calc(100vw - 6vw);
