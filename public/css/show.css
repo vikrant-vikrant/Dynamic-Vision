@@ -33,7 +33,6 @@
 .call a,
 .remind a {
   color: #00bfff;
-
 }
 .parent {
   text-transform: capitalize;
@@ -51,6 +50,15 @@
 .flex {
   display: flex;
   margin-left: 4vw;
+}
+.amount-date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.amount-date label {
+  margin-top: 0px;
+  width: 49%;
 }
 .addFess {
   width: 28vw;
@@ -108,7 +116,6 @@
 }
 .form label {
   position: relative;
-  margin-top: 1.5vh;
 }
 
 .form label .input {
