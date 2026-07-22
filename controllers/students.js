@@ -389,3 +389,17 @@ module.exports.deletearchiveStudent = catchAsync(async (req, res) => {
   req.flash("success", "Student deleted successfully");
   res.redirect("/students");
 });
+module.exports.stuLogin = catchAsync(async (req, res) => {
+  try {
+    const { name, grade } = req.body;
+    const student = await Student.findOne({ name, grade });
+    if (!student) {
+      req.flash("error", "Student not found");
+      return res.redirect("/stuLogin");
+    }
+    res.render("listings/showStu.ejs", { student,formattedDate: formatDate(student.joiningDate) });
+  } catch (err) {
+    console.log(err);
+    res.send("Server Error");
+  }
+});

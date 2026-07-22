@@ -28,4 +28,5 @@ router
   .route("/:id/editArchiveStu")
   .get(isLoggedIn, validateObjectId, student.editArchiveStu)
   .put(isLoggedIn, validateObjectId, student.saveEditArchiveStu);
+router.post("/stuLogin", student.stuLogin);
 module.exports = router;

@@ -100,6 +100,37 @@ app.use("/", user);
 app.get("/home", (req, res) => {
   res.render("listings/index.ejs");
 });
+app.get("/stuLogin", (req, res) => {
+  res.render("listings/stuLogin.ejs");
+});
+const Student = require("./models/students");
+function formatDate(date, type = "short") {
+  if (!date) return "";
+  if (type === "input") return date.toISOString().split("T")[0];
+  if (type === "today") return new Date().toISOString().substr(0, 10);
+  return date.toLocaleDateString("en-GB", {
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+}
+// app.post("/stuLogin", async (req, res) => {
+//   try {
+//     const { name, grade } = req.body;
+//     const student = await Student.findOne({ name, grade });
+//     if (!student) {
+//       req.flash("error", "Student not found");
+//       return res.redirect("/stuLogin");
+//     }
+//     // res.redirect(`/students/${student._id}`);
+//     res.render("listings/showStu.ejs", { student,formattedDate: formatDate(student.joiningDate) });
+//   } catch (err) {
+//     console.log(err);
+//     res.send("Server Error");
+//   }
+// });
+app.use("/students", students);
 app.use("/archived", isLoggedIn, archived);
 app.use("/fund", isLoggedIn, fundRoute);
 app.use("/students", isLoggedIn, students);
