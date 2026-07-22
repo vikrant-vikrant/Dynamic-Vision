@@ -157,7 +157,6 @@ body {
 }
 .form label {
   position: relative;
-  margin-top: 1.5vh;
 }
 
 .form label .input {
@@ -197,6 +196,15 @@ input::-webkit-inner-spin-button {
   top: -5px;
   font-size: 1.2em;
   font-weight: 600;
+}
+.amount-date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.amount-date label {
+  margin-top: 0px;
+  width: 49%;
 }
 
 .input {

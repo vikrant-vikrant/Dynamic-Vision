@@ -105,6 +105,33 @@
         </div>
         <form class="form" action="/fund/expenses" method="post">
           <h2 class="title">Add Expenses</h2>
+          <div class="amount-date">
+            <label>
+              <input
+                class="input"
+                type="number"
+                placeholder=""
+                id="amount"
+                name="amount"
+                required min="1" max="<%=balance%>"
+              />
+              <span>Amount</span>
+            </label>
+            <label>
+              <input
+                type="date"
+                class="input"
+                placeholder=""
+                required=""
+                id="paidDate"
+                name="paidDate"
+                value="<%=todayDate%>"
+                max="<%= todayDate%>"
+                  required
+              />
+              <span>Paid On</span>
+            </label>
+          </div>
           <label>
             <input
               class="input"
@@ -115,31 +142,6 @@
               required
             />
             <span>For</span>
-          </label>
-          <label>
-            <input
-              class="input"
-              type="number"
-              placeholder=""
-              id="amount"
-              name="amount"
-              required min="1" max="<%=balance%>"
-            />
-            <span>Amount</span>
-          </label>
-          <label>
-            <input
-              type="date"
-              class="input"
-              placeholder=""
-              required=""
-              id="paidDate"
-              name="paidDate"
-              value="<%=todayDate%>"
-              max="<%= todayDate%>"
-                required
-            />
-            <span>Paid On</span>
           </label>
           <button class="submit">Add Expenses</button>
         </form>
